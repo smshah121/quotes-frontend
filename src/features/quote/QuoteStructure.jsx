@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useAddQuoteMutation, useUpdateQuoteMutation } from './quoteapi';
+import { useAddQuoteMutation, useUpdateQuoteMutation, useGetQuotesQuery, useDeleteQuoteMutation } from './quoteapi'; // Import the RTK Query hooks
+import { useSelector } from 'react-redux';
+import LogoutButton from '../../login/Logoutbutton';
+
 
 const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
   const [author, setAuthor] = useState('');
   const [quote, setQuote] = useState('');
-
+  const userId = useSelector((state) => state.auth.userId);
   const [addQuote] = useAddQuoteMutation();
   const [updateQuote] = useUpdateQuoteMutation();
 
@@ -20,9 +23,9 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
     if (!quote || !author) return;
 
     if (selectedQuote) {
-      await updateQuote({ id: selectedQuote.id, quote, author });
+      await updateQuote({ id: selectedQuote.id, quote, author, userId }); // Include userId for update
     } else {
-      await addQuote({ quote, author });
+      await addQuote({ quote, author, userId });
     }
 
     // Clear form
@@ -35,6 +38,7 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
     <div className='bg-slate-800 flex justify-center p-6'>
       <div className='w-full max-w-md'>
         <h1 className='text-4xl font-bold text-white mb-3 flex justify-center'>QuoteNest</h1>
+        
         <p className="text-center text-gray-400 mb-1">Your personal collection of inspiration</p>
         <form onSubmit={handleSubmit} className='bg-slate-900 rounded-2xl px-7 py-5 shadow-lg'>
           <h2 className='text-white font-bold mb-3'>Add/Edit Quote</h2>
@@ -72,11 +76,17 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
                 Cancel
               </button>
             )}
+
           </div>
         </form>
+        <div className="mt-4 flex justify-center">
+          <LogoutButton />
+        </div>
       </div>
     </div>
   );
 };
 
 export default QuoteStruct;
+
+
