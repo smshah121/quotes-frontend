@@ -9,24 +9,24 @@ const QuoteListContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (userId) { // Remove token from here.  The fetchQuotes function handles it.
-      setLoading(true);
-      setError(null);
-      fetchQuotes(userId, token) // Pass the token!
-        .then(data => {
-          setQuotes(data);
-          setLoading(false);
-        })
-        .catch(err => {
-          setError(err.message || 'Failed to fetch quotes');
-          setLoading(false);
-        });
-    }
-     else {
-      setLoading(false);
-      setError('UserId not available. Please login.');
-    }
-  }, [userId]);
+  if (userId && token) {
+    setLoading(true);
+    setError(null);
+    fetchQuotes(userId, token)
+      .then(data => {
+        setQuotes(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message || 'Failed to fetch quotes');
+        setLoading(false);
+      });
+  } else {
+    setLoading(false);
+    setError('UserId not available. Please login.');
+  }
+}, [userId, token]);
+
 
   const fetchQuotes = async (userId, token) => {
     console.log("Fetching quotes for userId:", userId);
