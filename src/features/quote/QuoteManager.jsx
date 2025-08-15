@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import QuoteStruct from './QuoteStructure';
 
 import { useGetQuotesQuery } from './quoteapi';
@@ -11,14 +11,9 @@ import QuotePrint from './QuotePrint';
 const QuoteManager = () => {
   const { userId } = useParams();
   const [selectedQuote, setSelectedQuote] = useState(null);
-  const { data: quotes, error, isLoading, isFetching } = useGetQuotesQuery(userId);
-    useEffect(() => {
-    if (userId) {
-      // Fetch quotes when userId is available
-      //  useGetQuotesQuery(userId);  // Removed: RTK Query handles this, do not call directly
-     }
-  }, [userId]);
-
+  const { data: quotes, error, isLoading } = useGetQuotesQuery(userId);
+    
+  
   if (isLoading) {
     return <p className="text-white text-center">Loading quotes...</p>;
   }

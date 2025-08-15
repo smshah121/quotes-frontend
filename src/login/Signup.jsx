@@ -55,7 +55,7 @@ const Signup = () => {
         >
           {isLoading ? 'Signing up...' : 'Sign Up'}
         </button>
-        {error && <p className="text-red-600 text-sm">Signup failed. Try again.</p>}
+        {error && <p className="text-red-600 text-sm">this email already in use. try another.</p>}
       </form>
     </div>
   );

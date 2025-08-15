@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const quoteApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000/',
+    baseUrl: 'https://quotes-management-system-backend.vercel.app/',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token');
       if (token) {

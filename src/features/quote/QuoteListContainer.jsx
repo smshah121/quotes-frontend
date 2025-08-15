@@ -31,7 +31,7 @@ const QuoteListContainer = () => {
   const fetchQuotes = async (userId, token) => {
     console.log("Fetching quotes for userId:", userId);
     console.log("Token being sent:", token);  // Keep this for debugging
-    const response = await fetch(`http://localhost:3000/quotes/${userId}`, {
+    const response = await fetch(`https://quotes-management-system-backend.vercel.app/quotes/${userId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`, //  <---  CRUCIAL: Include the header here!
