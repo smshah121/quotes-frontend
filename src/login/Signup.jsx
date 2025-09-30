@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSignupMutation } from '../features/auth/authApi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -55,7 +55,16 @@ const Signup = () => {
         >
           {isLoading ? 'Signing up...' : 'Sign Up'}
         </button>
-        {error && <p className="text-red-600 text-sm">this email already in use. try another.</p>}
+
+        {/* Back to Login Link */}
+        <p className="text-sm text-center">
+          Already have an account?{' '}
+          <Link to="/" className="text-blue-600 hover:underline">
+            Back to Login
+          </Link>
+        </p>
+
+        {error && <p className="text-red-600 text-sm">This email is already in use. Try another.</p>}
       </form>
     </div>
   );
