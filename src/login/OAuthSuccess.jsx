@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken } from "../features/auth/authSlice";
-
+import jwtDecode from "jwt-decode";
 
 
 const OAuthSuccess = () => {
@@ -20,9 +20,11 @@ const OAuthSuccess = () => {
 
       // Optionally also store in localStorage for persistence
       localStorage.setItem("access_token", token);
+      const decoded = jwtDecode(token);
+      const userId = decoded.sub; // 👈 from JWT payload
+      navigate(`/quotes/${userId}`);
 
-      // Navigate to dashboard
-      navigate("/quotes/:userId");
+     
     } else {
       navigate("/"); // fallback
     }
