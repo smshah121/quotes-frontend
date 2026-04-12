@@ -17,7 +17,7 @@ const App = () => {
 
       {/* Quotes route with a styled layout, now with userId parameter */}
       <Route
-        path="/quotes/:userId"
+        path="/quotes"
         element={
           <div className="bg-slate-800 h-screen flex flex-col">
             <QuoteManager />

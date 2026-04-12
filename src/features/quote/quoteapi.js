@@ -15,7 +15,7 @@ export const quoteApi = createApi({
   tagTypes: ['Quote'],
   endpoints: (builder) => ({
     getQuotes: builder.query({
-      query: (userId) => `quotes/${userId}`,
+      query:()=> 'quotes',
       providesTags: ['Quote'],
     }),
     addQuote: builder.mutation({
