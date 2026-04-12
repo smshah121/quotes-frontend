@@ -21,7 +21,9 @@ const OAuthSuccess = () => {
       // Optionally also store in localStorage for persistence
       localStorage.setItem("access_token", token);
   
-      navigate(`/quotes`);
+      setTimeout(() => {
+      navigate("/quotes");
+    }, 100);
 
      
     } else {

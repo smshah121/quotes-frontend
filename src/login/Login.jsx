@@ -26,14 +26,14 @@ const handleSubmit = async (e) => {
 
     // ✅ Save to Redux
     dispatch(setToken(response.access_token));
-    dispatch(setUserId(response.userId));
+  
 
     // ✅ Also save to localStorage for RTK Query
     localStorage.setItem('access_token', response.access_token);
-    localStorage.setItem('user_id', response.userId);
+   
 
     // Navigate to quotes
-    navigate(`/quotes/${response.userId}`);
+    navigate('/quotes');
   } catch (err) {
     console.error('Login failed', err);
   }
