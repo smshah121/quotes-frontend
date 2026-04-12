@@ -83,7 +83,9 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
         </form>
         <div className="mt-4 flex gap-2 justify-center">
           <LogoutButton />
-          <Button onClick={() => navigate('/profile')}>View Profile</Button>
+         <button onClick={() => navigate('/profile')} className="bg-purple-600 text-white rounded-md px-5 py-2 hover:bg-purple-700">
+            View Profile
+          </button>
         </div>
       </div>
     </div>
