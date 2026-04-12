@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken } from "../features/auth/authSlice";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 
 const OAuthSuccess = () => {
