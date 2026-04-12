@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAddQuoteMutation, useUpdateQuoteMutation } from './quoteapi';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../../login/Logoutbutton';
 import { useNavigate } from 'react-router-dom';
+import { CiLogout } from "react-icons/ci";
+
 
 const QuoteIcon = ({ size = 14, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -36,6 +37,7 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
   const [addQuote]          = useAddQuoteMutation();
   const [updateQuote]       = useUpdateQuoteMutation();
   const navigate            = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (selectedQuote) {
@@ -43,6 +45,10 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
       setAuthor(selectedQuote.author);
     }
   }, [selectedQuote]);
+   const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,8 +95,8 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
           </button>
 
           {/* Wrap your existing LogoutButton or replace with this styled version */}
-          <LogoutButton className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
-            text-red-300 bg-red-500/10 hover:bg-red-500/20 transition-colors" />
+         <button className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+            text-red-300 bg-red-500/10 hover:bg-red-500/20 transition-colors' onClick={handleLogout}>< CiLogout /></button>
 
           {/* ↑ If LogoutButton doesn't accept className, use a plain button instead: */}
           {/*
