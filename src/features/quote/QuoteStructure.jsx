@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAddQuoteMutation, useUpdateQuoteMutation, useGetQuotesQuery, useDeleteQuoteMutation } from './quoteapi'; // Import the RTK Query hooks
 import { useSelector } from 'react-redux';
 import LogoutButton from '../../login/Logoutbutton';
+import { useNavigate } from 'react-router-dom';
 
 
 const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
@@ -10,6 +11,7 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
   const userId = useSelector((state) => state.auth.userId);
   const [addQuote] = useAddQuoteMutation();
   const [updateQuote] = useUpdateQuoteMutation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (selectedQuote) {
@@ -79,8 +81,9 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
 
           </div>
         </form>
-        <div className="mt-4 flex justify-center">
+        <div className="mt-4 flex gap-2 justify-center">
           <LogoutButton />
+          <Button onClick={() => navigate('/profile')}>View Profile</Button>
         </div>
       </div>
     </div>
