@@ -3,6 +3,8 @@ import { useLoginMutation } from '../features/auth/authApi';
 import { setToken, setUserId } from '../features/auth/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { FaGoogle } from "react-icons/fa";
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +12,11 @@ const Login = () => {
   const [login, { isLoading, error }] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleGoogleLogin = () => {
+    window.location.href = "https://quotes-management-system-backend.onrender.com/auth/google";
+  };
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -32,7 +39,7 @@ const handleSubmit = async (e) => {
   }
 };
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden p-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-extrabold text-gray-900">Sign In</h2>
@@ -110,6 +117,14 @@ const handleSubmit = async (e) => {
   </p>
 </div>
       </div>
+      <button
+          onClick={handleGoogleLogin}
+          className="w-60 mt-4 bg-white border-2 border-red-100 text-[#333] px-5 py-3.5 rounded-xl font-semibold hover:bg-red-50 hover:border-[#e60023] transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-md"
+        >
+          <FaGoogle className="text-[#0051e6] text-xl" />
+          <span>Continue with Google</span>
+        </button>
+
     </div>
   );
 };
