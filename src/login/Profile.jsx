@@ -74,7 +74,7 @@ const Profile = () => {
           <p className="text-xl font-semibold mb-2">⚠️ Failed to load profile</p>
           <button 
             onClick={() => navigate('/quotes')}
-            className="text-[#e60023] hover:underline"
+            className="text-[#2711a3] hover:underline"
           >
             Return to Dashboard
           </button>
@@ -91,14 +91,14 @@ const Profile = () => {
         <div className="mb-8">
           <button
             onClick={() => navigate("/quotes")}
-            className="flex items-center gap-2 text-[#e60023] hover:text-[#d01f1f] font-medium mb-6 transition-colors"
+            className="flex items-center gap-2 text-[#272086] hover:text-[#601bbb] font-medium mb-6 transition-colors"
           >
             <span>←</span>
             <span>Back to Quotes</span>
           </button>
 
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#e60023] to-[#ff4458] flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#3d00e6] to-[#28156b] flex items-center justify-center text-white text-3xl font-bold shadow-lg">
               {user?.name?.charAt(0).toUpperCase() || 'U'}
             </div>
             <div>
