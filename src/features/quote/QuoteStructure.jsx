@@ -91,13 +91,13 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
               text-slate-300 bg-white/5 hover:bg-white/10 transition-colors"
           >
-            <UserIcon />
-            View profile
+            <UserIcon size={32} />
+          
           </button>
 
           {/* Wrap your existing LogoutButton or replace with this styled version */}
          <button className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
-            text-red-300 bg-red-500/10 hover:bg-red-500/20 transition-colors' onClick={handleLogout}>< CiLogout /></button>
+            text-red-300 bg-red-500/10 hover:bg-red-500/20 transition-colors' onClick={handleLogout}>< CiLogout size={32} /></button>
 
           {/* ↑ If LogoutButton doesn't accept className, use a plain button instead: */}
           {/*
