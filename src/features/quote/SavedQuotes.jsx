@@ -31,7 +31,11 @@ const SavedQuotes = () => {
           onClick={async () => {
             await deleteQuote(id);
             toast.dismiss(t.id);
-            toast.success("Quote deleted");
+            toast.success("Quote deleted",
+              {
+  duration: 2000, // 2 seconds
+}
+            );
           }}
         >
           Delete
@@ -44,7 +48,11 @@ const SavedQuotes = () => {
   const handleCopy = async (q) => {
     try {
       await navigator.clipboard.writeText(`"${q.quote}" - ${q.author}`);
-      toast.success("Copied to clipboard");
+      toast.success("Copied to clipboard",
+        {
+  duration: 2000, // 2 seconds
+}
+      );
     } catch (err) {
       alert("❌ Failed to copy");
     }
@@ -82,7 +90,7 @@ const SavedQuotes = () => {
         </button>
 
         {/* Title */}
-        <h1 className="text-lg font-semibold">📌 Saved Quotes</h1>
+        <h1 className="text-lg font-semibold">Saved Quotes</h1>
 
         {/* Spacer */}
         <div></div>
