@@ -31,7 +31,7 @@ const SavedQuotes = () => {
           onClick={async () => {
             await deleteQuote(id);
             toast.dismiss(t.id);
-            toast.success("Quote deleted 🗑️");
+            toast.success("Quote deleted");
           }}
         >
           Delete
@@ -44,7 +44,7 @@ const SavedQuotes = () => {
   const handleCopy = async (q) => {
     try {
       await navigator.clipboard.writeText(`"${q.quote}" - ${q.author}`);
-      toast.success("Copied to clipboard ✅");
+      toast.success("Copied to clipboard");
     } catch (err) {
       alert("❌ Failed to copy");
     }
