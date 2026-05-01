@@ -18,8 +18,8 @@ const SavedQuotes = () => {
   if (error) return <p className="text-red-500 text-center">Error loading quotes</p>;
 
   return (
-    <div className='bg-slate-900 flex flex-col justify-start items-start min-h-screen text-white'>
-        <h1 className='text-white' onClick={()=>navigate("/quotes")}>Back to Dashboard</h1>
+    <div className='bg-slate-900 flex flex-col min-h-screen text-white'>
+        <h1 className='text-white cursor-pointer hover:underline' onClick={()=>navigate("/quotes")}>Back to Dashboard</h1>
     <div className=" flex flex-col items-center p-4 gap-4">
       {quotes?.length > 0 ? (
         quotes.map((qt) => (
