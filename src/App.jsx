@@ -5,6 +5,7 @@ import Login from './login/Login';
 import Signup from './login/Signup';
 import OAuthSuccess from './login/OAuthSuccess';
 import Profile from './login/Profile';
+import SavedQuotes from './features/quote/SavedQuotes';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/oauth-success" element={<OAuthSuccess />} />
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/savedquotes' element={<SavedQuotes/>}/>
      
 
       {/* Quotes route with a styled layout, now with userId parameter */}

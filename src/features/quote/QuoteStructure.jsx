@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CiLogout } from "react-icons/ci";
 import { logout } from '../auth/authSlice';
-
+import { FaRegBookmark } from "react-icons/fa";
 
 const QuoteIcon = ({ size = 14, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -93,6 +93,12 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
           >
             <UserIcon size={40} />
           
+          </button>
+          <button onClick={()=>navigate('/savedquotes')}
+            className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+              text-slate-300 bg-white/5 hover:bg-white/10 transition-colors'
+            >
+            <FaRegBookmark size={40}/>
           </button>
 
           {/* Wrap your existing LogoutButton or replace with this styled version */}
