@@ -91,7 +91,7 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
               text-slate-300 bg-white/5 hover:bg-white/10 transition-colors"
           >
-            <UserIcon size={40} />
+            <UserIcon />
           
           </button>
           <button onClick={()=>navigate('/savedquotes')}
