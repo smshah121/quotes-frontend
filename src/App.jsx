@@ -6,10 +6,13 @@ import Signup from './login/Signup';
 import OAuthSuccess from './login/OAuthSuccess';
 import Profile from './login/Profile';
 import SavedQuotes from './features/quote/SavedQuotes';
+import { Toaster } from "react-hot-toast";
 
 
 const App = () => {
   return (
+    <>
+    <Toaster position="top-center" reverseOrder={false} />
     <Routes>
       {/* Login route with its own layout */}
       <Route path="/" element={<Login />} />
@@ -29,6 +32,7 @@ const App = () => {
         }
       />
     </Routes>
+    </>
   );
 };
 

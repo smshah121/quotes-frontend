@@ -4,17 +4,47 @@ import { useSelector } from 'react-redux';
 import { MdDelete, MdContentCopy } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const SavedQuotes = () => {
   const userId = useSelector((state) => state.auth.userId);
   const { data: quotes, isLoading, error } = useGetQuotesQuery(userId);
   const [deleteQuote] = useDeleteQuoteMutation();
+
   const navigate = useNavigate();
+
+  const handleDelete = (id) => {
+  toast((t) => (
+    <div className="flex flex-col gap-2">
+      <span>Delete this quote?</span>
+
+      <div className="flex gap-2 justify-end">
+        <button
+          className="px-3 py-1 bg-gray-600 rounded"
+          onClick={() => toast.dismiss(t.id)}
+        >
+          Cancel
+        </button>
+
+        <button
+          className="px-3 py-1 bg-red-600 rounded"
+          onClick={async () => {
+            await deleteQuote(id);
+            toast.dismiss(t.id);
+            toast.success("Quote deleted 🗑️");
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  ));
+};
 
   const handleCopy = async (q) => {
     try {
       await navigator.clipboard.writeText(`"${q.quote}" - ${q.author}`);
-      alert("✅ Copied to clipboard!");
+      toast.success("Copied to clipboard ✅");
     } catch (err) {
       alert("❌ Failed to copy");
     }
@@ -89,7 +119,7 @@ const SavedQuotes = () => {
                 </button>
 
                 <button
-                  onClick={() => deleteQuote(qt.id)}
+                  onClick={() => handleDelete(qt.id)}
                   className="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-400 transition"
                   title="Delete"
                 >
