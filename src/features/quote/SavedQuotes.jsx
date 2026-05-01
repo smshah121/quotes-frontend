@@ -1,7 +1,9 @@
+import QuotePrint from "./QuotePrint";
+
 const SavedQuotes = () => {
 return(
     <div>
-        <h1>hello</h1>
+        <QuotePrint/>
     </div>
 )    
 }
