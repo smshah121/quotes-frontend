@@ -62,6 +62,8 @@ const QuoteStruct = ({ selectedQuote, setSelectedQuote }) => {
     setQuote('');
     setAuthor('');
     setSelectedQuote(null);
+
+    navigate('/savedquotes');
   };
 
   const handleCancel = () => {
